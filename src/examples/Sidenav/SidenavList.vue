@@ -63,6 +63,17 @@
           </template>
         </sidenav-item>
       </li>
+      <li class="nav-item">
+        <sidenav-item
+          url="/user"
+          :class="getRoute() === 'user' ? 'active' : ''"
+          navText="user"
+        >
+          <template v-slot:icon>
+            <i class="ni ni-single-02 text-danger text-sm opacity-10"></i>
+          </template>
+        </sidenav-item>
+      </li>
       <li class="mt-3 nav-item">
         <h6
           v-if="this.$store.state.isRTL"
@@ -129,24 +140,24 @@ import SidenavCard from "./SidenavCard.vue";
 export default {
   name: "SidenavList",
   props: {
-    cardBg: String
+    cardBg: String,
   },
   data() {
     return {
       title: "Argon Dashboard 2",
       controls: "dashboardsExamples",
-      isActive: "active"
+      isActive: "active",
     };
   },
   components: {
     SidenavItem,
-    SidenavCard
+    SidenavCard,
   },
   methods: {
     getRoute() {
       const routeArr = this.$route.path.split("/");
       return routeArr[1];
-    }
-  }
+    },
+  },
 };
 </script>

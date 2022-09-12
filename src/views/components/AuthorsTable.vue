@@ -2,234 +2,66 @@
   <div class="card">
     <div class="card-header pb-0">
       <h6>Authors table</h6>
+      <button type="button" class="btn btn-success" @click="createUser()">
+        Create
+      </button>
     </div>
     <div class="card-body px-0 pt-0 pb-2">
       <div class="table-responsive p-0">
         <table class="table align-items-center mb-0">
           <thead>
             <tr>
-              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
               <th
-                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
-              >Function</th>
-              <th
-                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-              >Status</th>
-              <th
-                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-              >Employed</th>
-              <th class="text-secondary opacity-7"></th>
+                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+              >
+                Author
+              </th>
+              <th class="text-secondary opacity-7 text-center">Actions</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
+          <!-- <tbody> -->
+          <tbody v-if="get">
+            <!-- <tr v-for="users in g$user" :key="users.id"> -->
+            <tr v-for="gets of get">
               <td>
                 <div class="d-flex px-2 py-1">
                   <div>
                     <img
-                      src="../../assets/img/team-2.jpg"
+                      :src="gets.avatar"
                       class="avatar avatar-sm me-3"
                       alt="user1"
                     />
                   </div>
                   <div class="d-flex flex-column justify-content-center">
-                    <h6 class="mb-0 text-sm">John Michael</h6>
-                    <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
+                    <h6 class="mb-0 text-sm">
+                      {{ gets.first_name }} {{ gets.last_name }}
+                    </h6>
+                    <p class="text-xs text-secondary mb-0">
+                      {{ gets.email }}
+                    </p>
                   </div>
                 </div>
               </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">Manager</p>
-                <p class="text-xs text-secondary mb-0">Organization</p>
-              </td>
-              <td class="align-middle text-center text-sm">
-                <span class="badge badge-sm bg-gradient-success">Online</span>
-              </td>
-              <td class="align-middle text-center">
-                <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
-              </td>
               <td class="align-middle">
-                <a
-                  href="javascript:;"
-                  class="text-secondary font-weight-bold text-xs"
-                  data-toggle="tooltip"
-                  data-original-title="Edit user"
-                >Edit</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-flex px-2 py-1">
-                  <div>
-                    <img
-                      src="../../assets/img/team-3.jpg"
-                      class="avatar avatar-sm me-3"
-                      alt="user2"
-                    />
-                  </div>
-                  <div class="d-flex flex-column justify-content-center">
-                    <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                    <p class="text-xs text-secondary mb-0">alexa@creative-tim.com</p>
-                  </div>
+                <div class="ms-auto text-center">
+                  <a
+                    class="btn btn-link text-danger text-gradient px-3 mb-0"
+                    @click="deleteUser()"
+                  >
+                    <i class="far fa-trash-alt me-2" aria-hidden="true"></i
+                    >Delete
+                  </a>
+                  <a
+                    class="btn btn-link text-dark px-3 mb-0"
+                    @click="updateUser()"
+                  >
+                    <i
+                      class="fas fa-pencil-alt text-dark me-2"
+                      aria-hidden="true"
+                    ></i
+                    >Edit
+                  </a>
                 </div>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">Programator</p>
-                <p class="text-xs text-secondary mb-0">Developer</p>
-              </td>
-              <td class="align-middle text-center text-sm">
-                <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-              </td>
-              <td class="align-middle text-center">
-                <span class="text-secondary text-xs font-weight-bold">11/01/19</span>
-              </td>
-              <td class="align-middle">
-                <a
-                  href="javascript:;"
-                  class="text-secondary font-weight-bold text-xs"
-                  data-toggle="tooltip"
-                  data-original-title="Edit user"
-                >Edit</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-flex px-2 py-1">
-                  <div>
-                    <img
-                      src="../../assets/img/team-4.jpg"
-                      class="avatar avatar-sm me-3"
-                      alt="user3"
-                    />
-                  </div>
-                  <div class="d-flex flex-column justify-content-center">
-                    <h6 class="mb-0 text-sm">Laurent Perrier</h6>
-                    <p class="text-xs text-secondary mb-0">laurent@creative-tim.com</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">Executive</p>
-                <p class="text-xs text-secondary mb-0">Projects</p>
-              </td>
-              <td class="align-middle text-center text-sm">
-                <span class="badge badge-sm bg-gradient-success">Online</span>
-              </td>
-              <td class="align-middle text-center">
-                <span class="text-secondary text-xs font-weight-bold">19/09/17</span>
-              </td>
-              <td class="align-middle">
-                <a
-                  href="javascript:;"
-                  class="text-secondary font-weight-bold text-xs"
-                  data-toggle="tooltip"
-                  data-original-title="Edit user"
-                >Edit</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-flex px-2 py-1">
-                  <div>
-                    <img
-                      src="../../assets/img/team-3.jpg"
-                      class="avatar avatar-sm me-3"
-                      alt="user4"
-                    />
-                  </div>
-                  <div class="d-flex flex-column justify-content-center">
-                    <h6 class="mb-0 text-sm">Michael Levi</h6>
-                    <p class="text-xs text-secondary mb-0">michael@creative-tim.com</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">Programator</p>
-                <p class="text-xs text-secondary mb-0">Developer</p>
-              </td>
-              <td class="align-middle text-center text-sm">
-                <span class="badge badge-sm bg-gradient-success">Online</span>
-              </td>
-              <td class="align-middle text-center">
-                <span class="text-secondary text-xs font-weight-bold">24/12/08</span>
-              </td>
-              <td class="align-middle">
-                <a
-                  href="javascript:;"
-                  class="text-secondary font-weight-bold text-xs"
-                  data-toggle="tooltip"
-                  data-original-title="Edit user"
-                >Edit</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-flex px-2 py-1">
-                  <div>
-                    <img
-                      src="../../assets/img/team-2.jpg"
-                      class="avatar avatar-sm me-3"
-                      alt="user5"
-                    />
-                  </div>
-                  <div class="d-flex flex-column justify-content-center">
-                    <h6 class="mb-0 text-sm">Richard Gran</h6>
-                    <p class="text-xs text-secondary mb-0">richard@creative-tim.com</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">Manager</p>
-                <p class="text-xs text-secondary mb-0">Executive</p>
-              </td>
-              <td class="align-middle text-center text-sm">
-                <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-              </td>
-              <td class="align-middle text-center">
-                <span class="text-secondary text-xs font-weight-bold">04/10/21</span>
-              </td>
-              <td class="align-middle">
-                <a
-                  href="javascript:;"
-                  class="text-secondary font-weight-bold text-xs"
-                  data-toggle="tooltip"
-                  data-original-title="Edit user"
-                >Edit</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-flex px-2 py-1">
-                  <div>
-                    <img
-                      src="../../assets/img/team-4.jpg"
-                      class="avatar avatar-sm me-3"
-                      alt="user6"
-                    />
-                  </div>
-                  <div class="d-flex flex-column justify-content-center">
-                    <h6 class="mb-0 text-sm">Miriam Eric</h6>
-                    <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">Programtor</p>
-                <p class="text-xs text-secondary mb-0">Developer</p>
-              </td>
-              <td class="align-middle text-center text-sm">
-                <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-              </td>
-              <td class="align-middle text-center">
-                <span class="text-secondary text-xs font-weight-bold">14/09/20</span>
-              </td>
-              <td class="align-middle">
-                <a
-                  href="javascript:;"
-                  class="text-secondary font-weight-bold text-xs"
-                  data-toggle="tooltip"
-                  data-original-title="Edit user"
-                >Edit</a>
               </td>
             </tr>
           </tbody>
@@ -240,7 +72,72 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "authors-table",
+  data: () => ({
+    get: [],
+  }),
+  created() {
+    axios.get(`https://reqres.in/api/users`).then((response) => {
+      this.get = response.data.data;
+    });
+  },
+
+  methods: {
+    async createUser() {
+      const response = await axios.post(`https://reqres.in/api/users`, {
+        email: "george.bluth@reqres.in",
+        first_name: "John",
+        last_name: "Doe",
+        avatar:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIh7-7PUPvidgYPK8vGyCdVODRbw8gFY8grQ&usqp=CAU",
+      });
+      console.log(response);
+    },
+    async updateUser() {
+      const response = await axios.put(`https://reqres.in/api/users/1`, {
+        email: "Dea.Didi@reqres.in",
+        first_name: "Didi",
+        last_name: "Dea",
+        avatar:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIh7-7PUPvidgYPK8vGyCdVODRbw8gFY8grQ&usqp=CAU",
+      });
+      console.log(response);
+    },
+
+    async deleteUser() {
+      const popup = confirm("Are you sure you want to delete this user?");
+      if (popup) {
+        const response = await axios.delete(`https://reqres.in/api/users/1`);
+        console.log(response);
+      }
+    },
+  },
 };
+// import d$user from "@/store/user";
+// import { mapActions, mapState } from "pinia";
+// export default {
+//   name: "authors-table",
+//   data: () => ({
+//     g$user: [],
+//   }),
+//   computed: {
+//     ...mapState(d$user, ["g$user"]),
+//   },
+//   methods: {
+//     ...mapActions(d$user, ["a$user"]),
+//     async fetchuser() {
+//       try {
+//         await this.a$user.fetchUser();
+//       } catch (e) {
+//         console.log(e);
+//       }
+//     },
+//   },
+//   mounted() {
+//     this.fetchuser();
+//   },
+// };
 </script>

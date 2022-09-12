@@ -7,6 +7,7 @@ import RTL from "../views/Rtl.vue";
 import Profile from "../views/Profile.vue";
 import Signup from "../views/Signup.vue";
 import Signin from "../views/Signin.vue";
+import user from "../views/user.vue";
 
 const routes = [
   {
@@ -40,6 +41,11 @@ const routes = [
     component: RTL,
   },
   {
+    path: "/user",
+    name: "User",
+    component: user,
+  },
+  {
     path: "/profile",
     name: "Profile",
     component: Profile,
@@ -54,7 +60,6 @@ const routes = [
     name: "Signup",
     component: Signup,
   },
-  
 ];
 
 const router = createRouter({

@@ -10,14 +10,6 @@
             <div class="row">
               <div class="col-md-6">
                 <default-info-card
-                  :classIcon="salary.classIcon"
-                  :title="salary.title"
-                  :desc="salary.desc"
-                  :price="salary.price"
-                />
-              </div>
-              <div class="col-md-6">
-                <default-info-card
                   :classIcon="paypal.classIcon"
                   :title="paypal.title"
                   :desc="paypal.desc"
